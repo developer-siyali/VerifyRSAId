@@ -1,9 +1,11 @@
 package com.example.validatersa_id
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
 import com.example.validatersa_id.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,9 +26,13 @@ class MainActivity : AppCompatActivity() {
                         val flag =  (presenterMainActivity.validateID(s.toString()))
                         if (flag){
                             binding.validatedOutput.text = getString(R.string.valid_id)
+                            binding.inputId.text.clear()
                         } else {
                             binding.validatedOutput.text = getString(R.string.invalid_id)
+                            binding.inputId.text.clear()
                         }
+                        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(it.windowToken, 0)
                         binding.verifyButton.isEnabled = false
                     }
                 } else {

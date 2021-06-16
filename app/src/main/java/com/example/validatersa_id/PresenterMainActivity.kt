@@ -12,12 +12,12 @@ class PresenterMainActivity {
                 storeString = id.substring(count, count + 1)
                 storeNumber = storeString.toInt()
                 storeNumber *= 2
-                if (storeNumber.toString().length == 2) {
+                sum += if (storeNumber.toString().length == 2) {
                     val charOne = storeNumber.toString().substring(0, 1)
                     val charTwo = storeNumber.toString().substring(1, 2)
-                    sum += charOne.toInt() + charTwo.toInt()
+                    charOne.toInt() + charTwo.toInt()
                 } else {
-                    sum += storeNumber
+                    storeNumber
                 }
             } else {
                 storeString = id.substring(count, count + 1)
